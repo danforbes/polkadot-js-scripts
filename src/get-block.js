@@ -1,34 +1,11 @@
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { formatNumber } from '@polkadot/util';
 
-let blockNumber = 0;
-let rpcProvider = 'wss://kusama-rpc.polkadot.io';
+import getOpts from './get-opts';
 
-const numArgs = process.argv.length;
-for (let argNdx = 3; argNdx + 1 < numArgs; /* updated in loop */) {
-  if (!process.argv[argNdx].startsWith('--')) {
-    ++argNdx;
-    continue;
-  }
-
-  switch (process.argv[argNdx].substring(2)) {
-    case 'block-number': {
-      blockNumber = parseInt(process.argv[argNdx + 1]);
-      argNdx += 2;
-      break;
-    }
-
-    case 'rpc-provider': {
-      rpcProvider = process.argv[argNdx + 1];
-      argNdx += 2;
-      break;
-    }
-
-    default: {
-      ++argNdx;
-    }
-  }
-}
+const opts = getOpts();
+let blockNumber = opts['block-number'] ? parseInt(opts['block-number']) : 0;
+let rpcProvider = opts['rpc-provider'] || 'wss://kusama-rpc.polkadot.io';
 
 (async () => {
   const wsProvider = new WsProvider(rpcProvider);
