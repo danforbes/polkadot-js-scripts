@@ -1,0 +1,14 @@
+{
+  "name": "polkadot-js-scripts",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "license": "Unlicense",
+  "scripts": {
+    "start": "node -r esm src/index.js"
+  },
+  "dependencies": {
+    "@polkadot/api": "^1.31.2",
+    "@polkadot/util": "^3.4.1",
+    "esm": "^3.2.25"
+  }
+}
