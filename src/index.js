@@ -5,7 +5,12 @@ const subcommands = [
   {
     "name": 'get-blocks-from',
     "description": 'Get all block from a given starting height, or the genesis block if no height is specified.',
-    "usage": 'get-blocks-from <starting height> <RPC provider>',
+    "usage": 'get-blocks-from [--block-number <block number>] [--rpc-provider <RPC provider>]',
+  },
+  {
+    "name": 'get-block',
+    "description": 'Get a block given its height, or the genesis block if no height is specified.',
+    "usage": 'get-block [--block-number <block number>] [--rpc-provider <RPC provider>]',
   },
 ]
 
