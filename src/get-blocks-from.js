@@ -27,6 +27,7 @@ let rpcProvider = opts['rpc-provider'] || 'wss://kusama-rpc.polkadot.io';
 			console.log(`ERROR at block: ${formatNumber(blockNumber)}`)
 			console.log(e)
 			console.log('\n\n\n\n')
+			process.exit()
 		}
 
 	blockNumber++;
