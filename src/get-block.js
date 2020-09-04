@@ -11,10 +11,16 @@ let rpcProvider = opts['rpc-provider'] || 'wss://kusama-rpc.polkadot.io';
   const wsProvider = new WsProvider(rpcProvider);
   const api = await ApiPromise.create({ provider: wsProvider });
 
-  const blockStart = Date.now();
-  const hash = await api.rpc.chain.getBlockHash(blockNumber);
-  const events = await api.query.system.events.at(hash);
+	const blockStart = Date.now();
 
-  console.log(formatNumber(blockNumber).padStart(10), `${`${Date.now() - blockStart}`.padStart(7)}ms`,  events.map(({ event: { data: { method, section } } }) => `${section}.${method}`).join(', '));
+	try {
+		const hash = await api.rpc.chain.getBlockHash(blockNumber);
+		const events = await api.query.system.events.at(hash);
+		console.log(formatNumber(blockNumber).padStart(10), `${`${Date.now() - blockStart}`.padStart(7)}ms`,  events.map(({ event: { data: { method, section } } }) => `${section}.${method}`).join(', '));
+	} catch (e) {
+		console.log(e)
+	}
+
+
   process.exit();
 })();
