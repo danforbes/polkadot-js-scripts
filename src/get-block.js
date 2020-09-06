@@ -1,11 +1,11 @@
-import { ApiPromise, WsProvider } from '@polkadot/api';
-import { formatNumber } from '@polkadot/util';
+import { ApiPromise, WsProvider } from "@polkadot/api";
 
-import getOpts from './get-opts';
+import getBlock from "./get-block-impl";
+import getOpts from "./get-opts";
 
 const opts = getOpts();
-let blockNumber = opts['block-number'] ? parseInt(opts['block-number']) : 0;
-let rpcProvider = opts['rpc-provider'] || 'wss://kusama-rpc.polkadot.io';
+let blockNumber = opts["block-number"] ? parseInt(opts["block-number"]) : 0;
+let rpcProvider = opts["rpc-provider"] || "wss://kusama-rpc.polkadot.io";
 
 (async () => {
   const wsProvider = new WsProvider(rpcProvider);
@@ -20,7 +20,6 @@ let rpcProvider = opts['rpc-provider'] || 'wss://kusama-rpc.polkadot.io';
 	} catch (e) {
 		console.log(e)
 	}
-
 
   process.exit();
 })();

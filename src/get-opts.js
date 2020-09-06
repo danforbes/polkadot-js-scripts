@@ -1,8 +1,8 @@
 export default () => {
   const opts = {};
   const numArgs = process.argv.length;
-  for (let argNdx = 3; argNdx + 1 < numArgs; /* updated in loop */) {
-    if (!process.argv[argNdx].startsWith('--')) {
+  for (let argNdx = 3; argNdx + 1 < numArgs /* updated in loop */; ) {
+    if (!process.argv[argNdx].startsWith("--")) {
       ++argNdx;
       continue;
     }

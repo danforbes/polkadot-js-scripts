@@ -1,18 +1,18 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 const subcommands = [
   {
-    "name": 'get-blocks-from',
-    "description": 'Get all block from a given starting height, or the genesis block if no height is specified.',
-    "usage": 'get-blocks-from [--block-number <block number>] [--rpc-provider <RPC provider>]',
+    name: "get-blocks-from",
+    description: "Get all block from a given starting height, or the genesis block if no height is specified.",
+    usage: "get-blocks-from [--block-number <block number>] [--rpc-provider <RPC provider>]",
   },
   {
-    "name": 'get-block',
-    "description": 'Get a block given its height, or the genesis block if no height is specified.',
-    "usage": 'get-block [--block-number <block number>] [--rpc-provider <RPC provider>]',
+    name: "get-block",
+    description: "Get a block given its height, or the genesis block if no height is specified.",
+    usage: "get-block [--block-number <block number>] [--rpc-provider <RPC provider>]",
   },
-]
+];
 
 const subCommandNames = {};
 subcommands.forEach((subcommand) => {
@@ -37,7 +37,7 @@ if (!subcommand) {
 const subcommandDep = subcommand.dep || path.join(__dirname, subcommand.name);
 
 if (!fs.existsSync(`${subcommandDep}.js`)) {
-  console.error('Could not find dependency for subcommand.');
+  console.error("Could not find dependency for subcommand.");
   process.exit(2);
 }
 
@@ -50,7 +50,7 @@ try {
 }
 
 function noSupportedSubcommand() {
-  console.error('You must provide a supported subcommand. The supported subcommands are:');
+  console.error("You must provide a supported subcommand. The supported subcommands are:");
   subcommands.forEach((subcommand) => {
     if (!isValidSubcommand(subcommand)) {
       return;
