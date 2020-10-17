@@ -12,6 +12,11 @@ const subcommands = [
     description: "Get a block given its height, or the genesis block if no height is specified.",
     usage: "get-block [--block-number <block number>] [--rpc-provider <RPC provider>]",
   },
+  {
+    name: "sign-tx",
+    description: "WIP",
+    usage: "sign-tx",
+  },
 ];
 
 const subCommandNames = {};
